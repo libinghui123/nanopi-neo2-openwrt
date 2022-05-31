@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-# sed -i 's/192.168.1.1/192.168.1.111/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.111/g' package/base-files/files/bin/config_generate
 
 # Clone community packages to package/community
 mkdir package/community
@@ -19,6 +19,10 @@ pushd package/community
 
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
+
+# Add luci-app-passwall
+git clone --depth 1 -b luci https://github.com/xiaorouji/openwrt-passwall passwall1 && mv -n passwall1/luci-app-passwall  ./; rm -rf passwall1
+
 
 # Add luci-app-vssr <M>
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git
